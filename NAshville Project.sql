@@ -152,12 +152,12 @@ From [Project Portfolio02].dbo.[Nashville Housing Project]
 		-- CREATING A TEMP TAVLE TO SELECT THE DUPLICATE
 WITH ROWNUMCTE AS (
 	SELECT *, Row_Number() Over(Partition BY ParcelID,
-											PropertyAddress,
-											SalePrice,
-											SaleDate,
-											LegalReference
-											ORDER BY UniqueID
-											) row_num
+						PropertyAddress,
+						SalePrice,
+						SaleDate,
+						LegalReference
+						ORDER BY UniqueID
+						) row_num
 FROM [Project Portfolio02].dbo.[Nashville Housing Project]
 --ORDER BY ParcelID
 	)
@@ -169,12 +169,12 @@ WHERE row_num > 1
 
 WITH ROWNUMCTE AS (
 	SELECT *, Row_Number() Over(Partition BY ParcelID,
-											PropertyAddress,
-											SalePrice,
-											SaleDate,
-											LegalReference
-											ORDER BY UniqueID
-											) row_num
+						PropertyAddress,
+						SalePrice,
+						SaleDate,
+						LegalReference
+						ORDER BY UniqueID
+						) row_num
 FROM [Project Portfolio02].dbo.[Nashville Housing Project]
 --ORDER BY ParcelID
 	)
@@ -186,12 +186,12 @@ WHERE row_num > 1
 
 	WITH ROWNUMCTE AS (
 	SELECT *, Row_Number() Over(Partition BY ParcelID,
-											PropertyAddress,
-											SalePrice,
-											SaleDate,
-											LegalReference
-											ORDER BY UniqueID
-											) row_num
+						PropertyAddress,
+						SalePrice,
+						SaleDate,
+						LegalReference
+						ORDER BY UniqueID
+						) row_num
 FROM [Project Portfolio02].dbo.[Nashville Housing Project]
 --ORDER BY ParcelID
 	)
@@ -208,3 +208,7 @@ WHERE row_num > 1
  DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress,
 			saleDate, SalesDates
 
+ --Check your data cleaned
+
+  SELECT *
+ FROM [Project Portfolio02].dbo.[Nashville Housing Project]
