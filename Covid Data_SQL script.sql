@@ -1,3 +1,6 @@
+
+-- Two different data sourcs are used in the eploration projects. 
+-- selecting all the data availale for a quick overview of the data we are working wiht
 Select *
 FROM [Project Portfolio02]..[covid death]
 
@@ -5,13 +8,14 @@ SELECT *
 FROM [Project Portfolio02]..[covid vaccination]
 	
 
-	-- select important data for analysis
+	-- selecting important data for analysis, 
+	-- The data selected shows the focus of the analysis, the focus is to explore data and see how one can chose different columns from tables necessary for the analysis.
 	
 Select Location, date, new_cases, total_cases, total_deaths, population
 FROM [Project Portfolio02]..[covid death]
 ORDER BY 1, 2
 
-	-- Total deaths Versus Total Cases
+	-- Total deaths Versus Total Cases ( Total number of death cases recorded out of total cases of covid-19 repoted ) 
 Select continent,location, date,total_deaths, total_cases, population, cast(total_deaths as float)/cast(total_cases AS float)*100 AS DeathPercentage
 FROM [Project Portfolio02]..[covid death]
 WHERE location like '%states%' and continent is not null
@@ -72,6 +76,7 @@ on dea.location = vac.location
 and dea.date = vac.date
 where dea.continent is not null
 order by 2, 3
+	
 
 	-- Using CTE
 WITH PopVsVac (continent, date, location, population, new_vaccinations, "Rolling people vaccinated")
@@ -116,8 +121,7 @@ JOIN
 
 
 	-- Calculate percentage of population vaccinated
-SELECT 
-    *,
+SELECT *,
     ([Rolling people vaccinated] / population) * 100 AS [Rolling people vaccinated percentage]
 FROM 
     #PercentagePopulationVaccinated;
